@@ -11,12 +11,12 @@ import java.util.*;
 public class Train {
     public static void main(String[] args) {
         Scanner in=new Scanner(System.in);
-       // while(in.hasNext()){
-            int n=3;//in.nextInt();
+       while(in.hasNext()){
+            int n=in.nextInt();
             //输入火车编号
             int[] A=new int[n];
             for (int i = 0; i <n ; i++) {
-                A[i]=i+1;//in.nextInt();
+                A[i]=in.nextInt();
             }
             int start=0;
             //计算n个火车的出栈的编号的排列组合
@@ -29,7 +29,7 @@ public class Train {
                 if(isLegal(A,out,n)){
                     //满足的组合，输入结果，每一个编号用空格分隔
                     StringBuilder sb=new StringBuilder();
-                    for(int i=0;i<n;i++){
+                    for(int i=0;i<n-1;i++){
                         sb.append(out[i]+" ");
                     }
                     sb.append(out[n-1]);
@@ -40,8 +40,8 @@ public class Train {
             for(String list:sortResult){
                 System.out.println(list);
             }
-      //  }
-       // in.close();
+        }
+        in.close();
     }
     /*
        in:火车编号数组
@@ -54,7 +54,7 @@ public class Train {
         int i=0;
         int j=0;
         while(i<n){//in还有元素的时候都需要判断
-            if(in[i]==out[i]){
+            if(in[i]==out[j]){
                 i++;
                 j++;
             }else{
